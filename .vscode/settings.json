@@ -1,0 +1,45 @@
+{
+  // ── Formatting ──────────────────────────────────────────
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // ── Code actions on save ────────────────────────────────
+  // Values MUST be strings: "explicit" | "always" | "never"
+  // This project has no ESLint config, so this block is a
+  // no-op — safe to delete entirely if you never install ESLint.
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // ── Files ──────────────────────────────────────────────
+  "files.associations": {
+    "*.html": "html",
+    "*.css": "css",
+    "*.js": "javascript"
+  },
+  "files.exclude": {
+    "**/.DS_Store": true
+  },
+
+  // ── Editor feel ─────────────────────────────────────────
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "editor.minimap.enabled": false,
+  "editor.fontSize": 14,
+  "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Consolas, monospace",
+  "editor.fontLigatures": true,
+  "editor.renderWhitespace": "boundary",
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.smoothScrolling": true,
+
+  // ── Terminal ────────────────────────────────────────────
+  "terminal.integrated.fontSize": 14,
+
+  // ── HTML / CSS helpers ──────────────────────────────────
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "html.format.indentInnerHtml": true,
+  "css.lint.unknownAtRules": "ignore"
+}
