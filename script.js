@@ -2,7 +2,9 @@
   "use strict";
 
   const content = window.VANGUARD_CONTENT;
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
   const finePointer = window.matchMedia("(pointer: fine)").matches;
   const root = document.querySelector("#site");
 
@@ -67,7 +69,8 @@
 
     const navLinks = content.navigation
       .map(
-        (link) => `<a class="nav-link" href="${escapeHTML(link.href)}">${escapeHTML(link.label)}</a>`,
+        (link) =>
+          `<a class="nav-link" href="${escapeHTML(link.href)}">${escapeHTML(link.label)}</a>`,
       )
       .join("");
 
@@ -80,13 +83,21 @@
       )
       .join("");
 
-    const valueList = content.founding.values.map((value) => `<li>${escapeHTML(value)}</li>`).join("");
+    const valueList = content.founding.values
+      .map((value) => `<li>${escapeHTML(value)}</li>`)
+      .join("");
     const foundingCopy = `<p class="mission-statement">${escapeHTML(content.founding.mission)}</p>${content.founding.paragraphs
       .map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`)
       .join("")}`;
-    const reframeCopy = content.founding.reframe.map((line) => `<p>${escapeHTML(line)}</p>`).join("");
-    const gatesCopy = content.gates.paragraphs.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join("");
-    const rallyCall = content.rally.map((line) => `<span>${escapeHTML(line)}</span>`).join("");
+    const reframeCopy = content.founding.reframe
+      .map((line) => `<p>${escapeHTML(line)}</p>`)
+      .join("");
+    const gatesCopy = content.gates.paragraphs
+      .map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`)
+      .join("");
+    const rallyCall = content.rally
+      .map((line) => `<span>${escapeHTML(line)}</span>`)
+      .join("");
 
     root.innerHTML = `
       <header class="site-nav" aria-label="${escapeHTML(content.brandName)}">
@@ -191,7 +202,9 @@
         const willOpen = !card.classList.contains("is-open");
         cards.forEach((item) => {
           item.classList.remove("is-open");
-          item.querySelector(".policy-toggle").setAttribute("aria-expanded", "false");
+          item
+            .querySelector(".policy-toggle")
+            .setAttribute("aria-expanded", "false");
         });
         if (willOpen) {
           card.classList.add("is-open");
@@ -219,7 +232,8 @@
   const initScrollSpy = () => {
     const navLinks = [...document.querySelectorAll(".nav-link")];
     const sections = [...document.querySelectorAll("[data-nav-section]")];
-    const linkFor = (id) => navLinks.find((link) => link.getAttribute("href") === `#${id}`);
+    const linkFor = (id) =>
+      navLinks.find((link) => link.getAttribute("href") === `#${id}`);
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
@@ -244,8 +258,15 @@
       const focus = window.innerHeight * 0.48;
       const active = sections.reduce((closest, section) => {
         const rect = section.getBoundingClientRect();
-        const distance = focus < rect.top ? rect.top - focus : focus > rect.bottom ? focus - rect.bottom : 0;
-        return !closest || distance < closest.distance ? { section, distance } : closest;
+        const distance =
+          focus < rect.top
+            ? rect.top - focus
+            : focus > rect.bottom
+              ? focus - rect.bottom
+              : 0;
+        return !closest || distance < closest.distance
+          ? { section, distance }
+          : closest;
       }, null)?.section;
 
       emblem.classList.add("is-visible");
@@ -253,7 +274,12 @@
       emblem.dataset.section = active?.id || "";
 
       if (!reduceMotion && finePointer) {
-      const progress = window.scrollY / Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        const progress =
+          window.scrollY /
+          Math.max(
+            1,
+            document.documentElement.scrollHeight - window.innerHeight,
+          );
         const turn = Math.sin(progress * Math.PI * 4) * 24;
         emblem.style.setProperty("--emblem-turn", `${turn.toFixed(1)}deg`);
       }
@@ -303,7 +329,12 @@
 
     if (lenis) lenis.on("scroll", ScrollTrigger.update);
 
-    gsap.from(".site-nav", { y: -28, autoAlpha: 0, duration: 0.8, ease: "power3.out" });
+    gsap.from(".site-nav", {
+      y: -28,
+      autoAlpha: 0,
+      duration: 0.8,
+      ease: "power3.out",
+    });
     gsap.from(".hero-copy > *", {
       y: 24,
       autoAlpha: 0,
@@ -328,7 +359,12 @@
       gsap.to(element, {
         yPercent: amount,
         ease: "none",
-        scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true },
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
       });
     });
   };
@@ -346,7 +382,11 @@
 
   const initStarfield = () => {
     const canvas = document.querySelector("#starfield");
-    const gl = canvas?.getContext("webgl", { alpha: true, antialias: false, powerPreference: "low-power" });
+    const gl = canvas?.getContext("webgl", {
+      alpha: true,
+      antialias: false,
+      powerPreference: "low-power",
+    });
     if (!canvas || !gl) return;
 
     const vertex = createShader(
