@@ -1,146 +1,154 @@
 /*
- * Public-facing copy transcribed verbatim from Majority Party Strategy.txt.
- * Internal voter-targeting and electoral-route material is intentionally omitted.
+ * Vanguard of Rights - Campaign Content
  */
 window.VANGUARD_CONTENT = Object.freeze({
   brandName: "VANGUARD OF RIGHTS",
   logoAlt: "The Vanguard V",
   navigation: [
-    { href: "#points", label: "Our 6 Key Points" },
-    { href: "#bio", label: "Our Bio" },
-    { href: "#line", label: "Why Vanguard?" },
-    { href: "#ledger", label: "Campaigns" },
+    { href: "#main", label: "Home" },
+    { href: "#points", label: "Points" },
+    { href: "#standard", label: "Scoreboard" },
+    { href: "#contact", label: "Contact" },
+    { href: "#subscribe", label: "Subscribe" },
   ],
   hero: {
-    eyebrow: "The Best You Can Find",
-    slogan: "Your rights. Our war.",
-    definition: "Fighting for what's right.",
+    eyebrow: "The First Rank of the Majority",
+    slogan: "Your rights. Our front line.",
+    definition: "The front line for rights you already have.",
     actions: [
-      { href: "#points", label: "Our 6 Key Philosophies", primary: true },
-      { href: "#bio", label: "How It Started", primary: false },
+      { href: "#points", label: "The People's Charter", primary: true },
+      { href: "#standard", label: "The Standard", primary: false },
     ],
   },
-  founding: {
-    eyebrow: "How It Began",
-    title: "We are the ones that listen to the people.",
-    mission:
-      "The Vanguard of Rights exists to secure the rights Americans want and need. We take point on six things Americans agree on: tarrifs, taxes, minimum wage, social security benefits, public school funding, and homeless shelter funding. The people are the army. We're just the first rank.",
-    paragraphs: [],
-    reframe: [
-      "The Vanguard isn't ahead of the people. It's ahead of the PROBLEM.",
-      "The tip of the sword follows what the handle wants. It carries out the orders of the handle.",
-      "We are not the avant-garde of an ideology. We are the avant-garde of the people.",
-    ],
-    values: [""],
-  },
+  points: [
+    {
+      id: "tariffs",
+      title: "Less Tarrifs/Inflation",
+      shortTitle: "Tariffs & Inflation",
+      icon: "assets/icons/icon-tariffs.png",
+      brief:
+        "Lower everyday prices on groceries and essentials by reducing counterproductive tariffs and fighting cost-of-living inflation.",
+      details: [
+        "Repeal excessive import tariffs on food staples and building materials that directly increase shelf prices.",
+        "Crack down on corporate price-gouging and monopoly markups across fuel and grocery supply chains.",
+        "Provide immediate price relief at checkout so paychecks stretch further each month.",
+      ],
+      flagship: "The Fair Shelf Act",
+    },
+    {
+      id: "taxes",
+      title: "Taxes",
+      shortTitle: "Tax Fairness",
+      icon: "assets/icons/icon-taxes.png",
+      brief:
+        "Deliver targeted tax relief for working families while ensuring corporations and conglomerates pay their fair share.",
+      details: [
+        "Exempt overtime hours and secondary income from federal income taxation for households earning under $150k.",
+        "Close offshore tax havens and enforce a transparent minimum corporate tax rate.",
+        "Reward honest daily labor instead of passive speculative wealth sheltering.",
+      ],
+      flagship: "The Second Shift Tax Relief",
+    },
+    {
+      id: "wage",
+      title: "Raising minimum wage",
+      shortTitle: "Living Wage",
+      icon: "assets/icons/icon-wage.png",
+      brief:
+        "Ensure full-time work provides a regional living wage that keeps pace with housing, food, and basic living costs.",
+      details: [
+        "Phase in regional living wage benchmarks indexed to local inflation and median rent.",
+        "Provide transitional tax credits for local small businesses to adapt smoothly without job cuts.",
+        "Ensure 40 hours of work per week guarantees a dignified life without relying on emergency aid.",
+      ],
+      flagship: "The Dignity at Work Act",
+    },
+    {
+      id: "school",
+      title: "School Funding",
+      shortTitle: "Public Education",
+      icon: "assets/icons/icon-school.png",
+      brief:
+        "Deliver equitable funding to modernize public school classrooms, support certified teachers, and equip students.",
+      details: [
+        "Expand dedicated federal grants to equalize school funding between wealthy and underfunded school districts.",
+        "Support educator retention through student loan forgiveness and federal teacher wage supplements.",
+        "Guarantee modern STEM labs, updated textbooks, libraries, and clean facilities in every neighborhood.",
+      ],
+      flagship: "The Public School Promise",
+    },
+    {
+      id: "social-security",
+      title: "Social Security Benefits",
+      shortTitle: "Retirement Security",
+      icon: "assets/icons/icon-social-security.png",
+      brief:
+        "Protect and expand retirement security so seniors and disabled citizens receive every earned dollar with dignity.",
+      details: [
+        "Eliminate the payroll tax cap on incomes above $400k to fully solventize Social Security for 75+ years.",
+        "Modernize the annual COLA formula to accurately match rising prescription and medical care costs.",
+        "Protect funds from privatization or partisan budget cuts—guaranteeing lifetime safety nets.",
+      ],
+      flagship: "The Earned Security Guarantee",
+    },
+    {
+      id: "shelter",
+      title: "Homeless Shelter Funding",
+      shortTitle: "Shelter & Housing",
+      icon: "assets/icons/icon-shelter.png",
+      brief:
+        "Direct robust funding for emergency shelters, mental healthcare, and rapid supportive housing to end street homelessness.",
+      details: [
+        "Fund municipal grants for modern, secure emergency shelters with caseworkers and job placement.",
+        "Expand permanent supportive housing and addiction recovery services so individuals stay housed.",
+        "Create dignified, safe pathways off the streets while revitalizing public community spaces.",
+      ],
+      flagship: "The Shelter to Home Initiative",
+    },
+  ],
   standard: {
-    eyebrow: "THE STANDARD",
+    eyebrow: "THE SCOREBOARD",
     title: "The Standard is the scoreboard.",
-    body: "The party flag: navy field, one red stripe, six stars, one per Right. It launches with zero stars filled and gains a battle star every time a Right becomes law. A logo that keeps score.",
+    body: "The party flag: navy field, one red stripe, six stars—one per Right. It launches with zero stars filled and gains a battle star every time a Right becomes law. A logo that keeps score.",
     caption:
-      "The flag is literally unfinished until we finish our jobs. Every rally opens by raising whatever the Standard currently holds.",
-  },
-  charter: {
-    eyebrow: "THE PEOPLE'S CHARTER",
-    title: "THE PEOPLE'S CHARTER",
-    intro:
-      "Not a platform. A charter of Six rights that help the people, no matter what. Every Right carries its polling tier: 🔩 Iron (75%+), 🛡️ Strong (65–75%), ⚠️ Watch (60–65%), from real national polling (KFF, Gallup, Pew, Data for Progress, 2024-cycle surveys). Two gates govern everything: the number AND the barbecue test (no tribal coding, no matter how high it polls).",
-    policies: [
-      {
-        title: "THE PAYCHECK",
-        right: "The Right to a Paycheck That Lasts the Month.",
-        flagship: "Flagship: The Second Shift Tax Cut.",
-        badge: "🛡️ STRONG (60–67%)",
-      },
-      {
-        title: "GAS & GROCERIES",
-        right: "The Right to a Full Tank and a Full Cart.",
-        flagship: "Flagship: The Honest Shelf Act.",
-        badge: "🛡️ STRONG (65–70%)",
-      },
-      {
-        title: "RENT",
-        right: "The Right to a Roof That Doesn't Eat the Paycheck.",
-        flagship: "Flagship: The Starter Home Surge.",
-        badge: "🛡️ STRONG (60–65%)",
-      },
-      {
-        title: "THE POWER BILL",
-        right: "The Right to Power That Stays On and Costs Less.",
-        flagship: "Flagship: The American Energy Deal.",
-        badge: "🛡️ STRONG (65%+)",
-      },
-      {
-        title: "THE MEDICAL BILL",
-        right: "The Right to Get Sick Without Going Broke.",
-        flagship: "Flagship: The Real Price Rule.",
-        badge: "🔩 IRON (83–90%)",
-      },
-      {
-        title: "THE JUNK FEES",
-        right: "The Right to the Price You Saw.",
-        flagship: "Flagship: The Price You Saw Act.",
-        badge: "🔩 IRON (~80%)",
-      },
-    ],
-  },
-  gates: {
-    eyebrow: "THE STANDARD POLL",
-    title: "The Charter is governed by data, not delegates.",
-    paragraphs: [
-      "Every quarter, an independent pollster (university partnership) surveys every plank.",
-      "Question wording pre-registered. Full crosstabs published. Any journalist can check the math.",
-      "Any Right below 60% for two consecutive quarters auto-suspends from the Charter. No delegates, no convention. Data decides.",
-      "Every campaign ad links to its own poll.",
-    ],
+      "The flag is unfinished until we finish our jobs. Every rally opens by raising whatever the Standard currently holds.",
   },
   line: {
     eyebrow: "THE WAYS OF THE LINE",
     title: "You don't join. You fall in.",
     intro:
-      "You don't join. You fall in. Members stand on the Line. Dues are paid in work.",
+      "Members stand on the Line. Dues are paid in work, not empty slogans.",
     cards: [
       {
-        title: "Posts",
-        body: "County chapters are Posts, borrowed straight from the Legion and the VFW, the most trusted nonpartisan buildings in America. Every county gets one.",
+        title: "County Posts",
+        body: "Local chapters built in every community. Accessible, nonpartisan spaces for real organizing.",
       },
       {
         title: "Muster Days",
-        body: "Muster Days: free workdays for playground builds, storm cleanup, and bleacher repairs. Still the only party whose campaign ads are things you can stand on.",
+        body: "Community workdays for playground builds, storm cleanup, and local repairs. Campaigning through service.",
       },
       {
-        title: "Commission",
-        body: "Candidates are Commissioned in public, signing the Charter plus the rules: only 60%+ votes, no stocks, out in 12 years, every dime in the Ledger. Break your Commission and your Post fields someone to run against you.",
+        title: "Public Commission",
+        body: "Candidates sign strict pledges: no stock trading, 12-year term limits, and 100% financial transparency in the public ledger.",
       },
     ],
   },
   ledger: {
-    eyebrow: "Everything in the Ledger.",
+    eyebrow: "TRANSPARENCY",
     title: "Everything in the Ledger.",
     question: "Who funds you?",
-    body: "Our rule: no donation over $1,000, ever, from anyone. Everything in the Ledger. We can't out-raise the machines (~$15B/cycle), so we out-clean them.",
+    body: "Our rule: no donation over $1,000, ever, from anyone. Everything published publicly in the Ledger. We out-clean the political machines.",
   },
-  answers: {
-    eyebrow: "INOCULATIONS",
-    title: "The full name is the chant",
-    items: [
-      {
-        question:
-          '"Vanguard" alone = Lenin\'s vanguard-party theory; attack ads write themselves',
-        answer:
-          'We never say "the Vanguard" alone. Ever. Full name, always. And the counter is devastating: "Lenin\'s vanguard replaced the people\'s will. Ours only carries what the people already demand. Our founding acts are term limits and a stock-trading ban. Weirdest Leninists in history."',
-      },
-      {
-        question: "Who funds you?",
-        answer:
-          "Our rule: no donation over $1,000, ever, from anyone. Everything in the Ledger. We can't out-raise the machines (~$15B/cycle), so we out-clean them.",
-      },
-      {
-        question: "They'll just steal your platform.",
-        answer:
-          "the judo: that IS the win condition. If Congress passes the Real Price Rule next year, the Standard gains its star, we take the credit, and we march on the next Right. We are the only party in America that wins by losing planks. You cannot spoiler a vanguard that's already overrun the objective.",
-      },
-    ],
+  contact: {
+    eyebrow: "GET IN TOUCH",
+    title: "Contact the Vanguard",
+    body: "Have questions about our platform or want to bring a Post to your county? Reach out to our organizing team.",
+    email: "organize@vanguardofrights.org",
+  },
+  subscribe: {
+    eyebrow: "STAND ON THE LINE",
+    title: "Subscribe for Updates",
+    body: "Get weekly campaign dispatches, Muster Day announcements, and legislative scoreboard alerts.",
   },
   rally: ["VANGUARD!", "OF RIGHTS!", "WHO TAKES POINT?", "WE DO!"],
   vibe: "Forward. Sworn. Done.",

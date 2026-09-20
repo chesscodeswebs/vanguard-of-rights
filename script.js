@@ -26,18 +26,38 @@
     </header>`;
 
   const renderSite = () => {
-    const policyCards = content.charter.policies
+    const floatingButtons = content.points
       .map(
-        (policy, index) => `
-          <article class="policy-card" data-reveal>
-            <div class="policy-card__top">
-              <span class="policy-index">0${index + 1}</span>
-              <h3 class="policy-title">${escapeHTML(policy.title)}</h3>
+        (point, index) => `
+          <button class="floating-btn magnetic floating-btn--${point.id}" type="button" data-point-id="${point.id}" aria-label="View deep knowledge for ${escapeHTML(point.title)}">
+            <span class="floating-btn__box">
+              <img class="floating-btn__icon" src="${escapeHTML(point.icon)}" alt="" width="32" height="32" />
+              <span class="floating-btn__label">${escapeHTML(point.title)}</span>
+            </span>
+          </button>`,
+      )
+      .join("");
+
+    const briefCards = content.points
+      .map(
+        (point, index) => `
+          <article class="point-card" id="point-${point.id}" data-reveal>
+            <div class="point-card__header">
+              <div class="point-card__icon-wrap">
+                <img class="point-card__icon" src="${escapeHTML(point.icon)}" alt="" width="36" height="36" />
+                <span class="point-card__num">0${index + 1}</span>
+              </div>
+              <h3 class="point-card__title">${escapeHTML(point.title)}</h3>
             </div>
-            <p class="policy-right">${escapeHTML(policy.right)}</p>
-            <div class="policy-pill">
-              <span class="policy-pill__tag">FLAGSHIP</span>
-              <span class="policy-pill__name">${escapeHTML(policy.flagship)}</span>
+            <p class="point-card__brief">${escapeHTML(point.brief)}</p>
+            <div class="point-card__footer">
+              <div class="point-pill">
+                <span class="point-pill__tag">FLAGSHIP</span>
+                <span class="point-pill__name">${escapeHTML(point.flagship)}</span>
+              </div>
+              <button class="deep-trigger-btn" type="button" data-point-id="${point.id}">
+                Deep Knowledge <span aria-hidden="true">&rarr;</span>
+              </button>
             </div>
           </article>`,
       )
@@ -53,20 +73,10 @@
       )
       .join("");
 
-    const answerItems = content.answers.items
-      .map(
-        (item) => `
-          <article class="answer-panel" data-reveal>
-            <h3 class="answer-question">${escapeHTML(item.question)}</h3>
-            <p>${escapeHTML(item.answer)}</p>
-          </article>`,
-      )
-      .join("");
-
     const navLinks = content.navigation
       .map(
         (link) =>
-          `<a class="nav-link" href="${escapeHTML(link.href)}">${escapeHTML(link.label)}</a>`,
+          `<a class="nav-pill" href="${escapeHTML(link.href)}">${escapeHTML(link.label)}</a>`,
       )
       .join("");
 
@@ -79,48 +89,48 @@
       )
       .join("");
 
-    const gatesCopy = content.gates.paragraphs
-      .map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`)
-      .join("");
     const rallyCall = content.rally
       .map((line) => `<span>${escapeHTML(line)}</span>`)
       .join("");
 
     root.innerHTML = `
-      <header class="site-nav" aria-label="${escapeHTML(content.brandName)}">
-        <a class="nav-brand" href="#main" aria-label="${escapeHTML(content.brandName)}">
-          <img class="nav-logo" src="assets/v-mark.png" alt="${escapeHTML(content.logoAlt)}" />
-          <span class="nav-brand__name">${escapeHTML(content.brandName)}</span>
-        </a>
-        <nav class="nav-links" aria-label="${escapeHTML(content.brandName)}">
+      <header class="pill-nav-container">
+        <nav class="pill-nav" aria-label="Main Navigation">
           ${navLinks}
         </nav>
       </header>
 
-      <aside class="side-emblem" aria-hidden="true">
-        <div class="side-emblem__stage">
-          <img class="side-emblem__echo" src="assets/v-mark.png" alt="" />
-          <img class="side-emblem__mark" src="assets/v-mark.png" alt="" />
-          <span class="side-emblem__orbit"></span>
-        </div>
-      </aside>
-
       <main id="main">
-        <section class="hero" data-beacon aria-labelledby="hero-name">
-          <div class="hero-copy">
+        <section class="hero-stage" data-beacon aria-labelledby="hero-name">
+          <div class="hero-stage__backdrop" aria-hidden="true">
+            <img class="hero-stage__portrait" src="assets/the-most-sigma-ligma.png" alt="" />
+          </div>
+
+          <div class="hero-stage__content">
             <p class="eyebrow">${escapeHTML(content.hero.eyebrow)}</p>
             <h1 class="hero-name" id="hero-name">${escapeHTML(content.brandName)}</h1>
             <p class="hero-slogan">${escapeHTML(content.hero.slogan)}</p>
             <p class="hero-definition">${escapeHTML(content.hero.definition)}</p>
             <div class="hero-actions">${heroActions}</div>
           </div>
-          <figure class="hero-portrait" aria-hidden="true">
-            <img src="assets/the-most-sigma-ligma.png" alt="" />
-          </figure>
+
+          <div class="floating-cluster" aria-label="Six Key Points Quick Actions">
+            ${floatingButtons}
+          </div>
+
           <div class="hero-bridge" aria-hidden="true"><span></span></div>
         </section>
 
-        <section class="section" id="standard" data-beacon>
+        <section class="section" id="points" data-nav-section data-beacon>
+          <header class="section-header" data-reveal>
+            <p class="eyebrow">OUR 6 KEY POINTS</p>
+            <h2 class="display-title">What We Fight For</h2>
+            <p class="section-intro">Click any point for deeper knowledge on our policy roadmap and community impact.</p>
+          </header>
+          <div class="point-grid">${briefCards}</div>
+        </section>
+
+        <section class="section" id="standard" data-nav-section data-beacon>
           <header class="section-header" data-reveal>
             <p class="eyebrow">${escapeHTML(content.standard.eyebrow)}</p>
           </header>
@@ -131,16 +141,6 @@
               <p class="standard-caption">${escapeHTML(content.standard.caption)}</p>
             </div>
           </div>
-        </section>
-
-        <section class="section" id="points" data-nav-section data-beacon>
-          ${renderSectionHeader(content.charter)}
-          <div class="policy-grid">${policyCards}</div>
-        </section>
-
-        <section class="section" id="gates">
-          ${renderSectionHeader(content.gates)}
-          <div class="gates-panel" data-reveal>${gatesCopy}</div>
         </section>
 
         <section class="section" id="line" data-nav-section data-beacon>
@@ -156,9 +156,26 @@
           </article>
         </section>
 
-        <section class="section" id="faq" data-nav-section>
-          ${renderSectionHeader(content.answers)}
-          <div class="answer-list">${answerItems}</div>
+        <section class="section" id="contact" data-nav-section>
+          ${renderSectionHeader(content.contact)}
+          <div class="contact-box" data-reveal>
+            <p class="contact-text">${escapeHTML(content.contact.body)}</p>
+            <a class="cta cta--primary magnetic" href="mailto:${escapeHTML(content.contact.email)}">
+              ${escapeHTML(content.contact.email)}
+            </a>
+          </div>
+        </section>
+
+        <section class="section" id="subscribe" data-nav-section>
+          ${renderSectionHeader(content.subscribe)}
+          <div class="subscribe-box" data-reveal>
+            <p class="subscribe-text">${escapeHTML(content.subscribe.body)}</p>
+            <form class="subscribe-form" id="subscribe-form" action="#" method="POST">
+              <input class="subscribe-input" type="email" placeholder="Enter your email address" required aria-label="Email address for subscription" />
+              <button class="cta cta--primary magnetic" type="submit">Join Vanguard</button>
+            </form>
+            <p class="subscribe-feedback" id="subscribe-feedback" aria-live="polite"></p>
+          </div>
         </section>
       </main>
 
@@ -167,7 +184,29 @@
         <p class="footer-name" data-reveal>${escapeHTML(content.brandName)}</p>
         <div class="rally-call" data-reveal>${rallyCall}</div>
         <p class="footer-vibe" data-reveal>${escapeHTML(content.vibe)}</p>
-      </footer>`;
+      </footer>
+
+      <!-- Deeper Knowledge Modal -->
+      <div class="deep-modal-backdrop" id="deep-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="deep-modal-card">
+          <button class="deep-modal-close" id="modal-close" type="button" aria-label="Close details">&times;</button>
+          <div class="deep-modal-header">
+            <img class="deep-modal-icon" id="modal-icon" src="" alt="" width="48" height="48" />
+            <div>
+              <p class="deep-modal-tag" id="modal-tag">FLAGSHIP ACT</p>
+              <h3 class="deep-modal-title" id="modal-title"></h3>
+            </div>
+          </div>
+          <p class="deep-modal-brief" id="modal-brief"></p>
+          <div class="deep-modal-body">
+            <h4>Policy Breakdown & Implementation:</h4>
+            <ul class="deep-modal-list" id="modal-list"></ul>
+          </div>
+          <div class="deep-modal-footer">
+            <button class="cta cta--primary" id="modal-action-close" type="button">Understood</button>
+          </div>
+        </div>
+      </div>`;
   };
 
   const initMagneticControls = () => {
@@ -175,8 +214,8 @@
     document.querySelectorAll(".magnetic").forEach((control) => {
       control.addEventListener("pointermove", (event) => {
         const bounds = control.getBoundingClientRect();
-        const x = (event.clientX - (bounds.left + bounds.width / 2)) * 0.12;
-        const y = (event.clientY - (bounds.top + bounds.height / 2)) * 0.16;
+        const x = (event.clientX - (bounds.left + bounds.width / 2)) * 0.18;
+        const y = (event.clientY - (bounds.top + bounds.height / 2)) * 0.22;
         control.style.transform = `translate3d(${x}px, ${y}px, 0)`;
       });
       control.addEventListener("pointerleave", () => {
@@ -186,7 +225,7 @@
   };
 
   const initScrollSpy = () => {
-    const navLinks = [...document.querySelectorAll(".nav-link")];
+    const navLinks = [...document.querySelectorAll(".nav-pill")];
     const sections = [...document.querySelectorAll("[data-nav-section]")];
     const linkFor = (id) =>
       navLinks.find((link) => link.getAttribute("href") === `#${id}`);
@@ -199,61 +238,87 @@
         navLinks.forEach((link) => link.classList.remove("is-active"));
         linkFor(visible.target.id)?.classList.add("is-active");
       },
-      { rootMargin: "-25% 0px -50%", threshold: [0.05, 0.35, 0.7] },
+      { rootMargin: "-20% 0px -50%", threshold: [0.05, 0.35, 0.7] },
     );
     sections.forEach((section) => observer.observe(section));
   };
 
-  const initSideEmblem = () => {
-    const emblem = document.querySelector(".side-emblem");
-    const sections = [...document.querySelectorAll("main > section")];
-    if (!emblem || !sections.length) return;
+  const initDeepKnowledgeModal = (lenis) => {
+    const modal = document.querySelector("#deep-modal");
+    const closeBtn = document.querySelector("#modal-close");
+    const actionClose = document.querySelector("#modal-action-close");
+    const modalIcon = document.querySelector("#modal-icon");
+    const modalTitle = document.querySelector("#modal-title");
+    const modalTag = document.querySelector("#modal-tag");
+    const modalBrief = document.querySelector("#modal-brief");
+    const modalList = document.querySelector("#modal-list");
 
-    let ticking = false;
-    const update = () => {
-      const focus = window.innerHeight * 0.48;
-      const active = sections.reduce((closest, section) => {
-        const rect = section.getBoundingClientRect();
-        const distance =
-          focus < rect.top
-            ? rect.top - focus
-            : focus > rect.bottom
-              ? focus - rect.bottom
-              : 0;
-        return !closest || distance < closest.distance
-          ? { section, distance }
-          : closest;
-      }, null)?.section;
+    if (!modal) return;
 
-      emblem.classList.add("is-visible");
-      emblem.classList.toggle("is-featured", active?.id === "standard");
-      emblem.dataset.section = active?.id || "";
+    const openPoint = (pointId) => {
+      const point = content.points.find((p) => p.id === pointId);
+      if (!point) return;
 
-      if (!reduceMotion && finePointer) {
-        const progress =
-          window.scrollY /
-          Math.max(
-            1,
-            document.documentElement.scrollHeight - window.innerHeight,
-          );
-        const turn = Math.sin(progress * Math.PI * 4) * 24;
-        emblem.style.setProperty("--emblem-turn", `${turn.toFixed(1)}deg`);
-      }
-      ticking = false;
+      modalIcon.src = point.icon;
+      modalTitle.textContent = point.title;
+      modalTag.textContent = `FLAGSHIP: ${point.flagship.toUpperCase()}`;
+      modalBrief.textContent = point.brief;
+      modalList.innerHTML = point.details
+        .map((item) => `<li>${escapeHTML(item)}</li>`)
+        .join("");
+
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
     };
 
-    window.addEventListener(
-      "scroll",
-      () => {
-        if (!ticking) {
-          ticking = true;
-          requestAnimationFrame(update);
-        }
-      },
-      { passive: true },
-    );
-    window.addEventListener("resize", update, { passive: true });
-    update();
+    const closeModal = () => {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    };
+
+    closeBtn?.addEventListener("click", closeModal);
+    actionClose?.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.classList.contains("is-open")) {
+        closeModal();
+      }
+    });
+
+    // Wire up hero floating buttons -> open deep knowledge directly
+    document.querySelectorAll(".floating-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.dataset.pointId;
+        openPoint(id);
+      });
+    });
+
+    // Wire up brief cards "Deep Knowledge" button -> open deep knowledge
+    document.querySelectorAll(".deep-trigger-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.dataset.pointId;
+        openPoint(id);
+      });
+    });
+  };
+
+  const initForms = () => {
+    const form = document.querySelector("#subscribe-form");
+    const feedback = document.querySelector("#subscribe-feedback");
+    if (!form || !feedback) return;
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      feedback.textContent =
+        "Thank you for joining the Vanguard of Rights. You are on the Line.";
+      feedback.classList.add("is-success");
+      form.reset();
+    });
   };
 
   const initLenis = () => {
@@ -297,19 +362,27 @@
 
     if (lenis) lenis.on("scroll", ScrollTrigger.update);
 
-    gsap.from(".site-nav", {
+    gsap.from(".pill-nav-container", {
       y: -28,
       autoAlpha: 0,
       duration: 0.8,
       ease: "power3.out",
     });
-    gsap.from(".hero-copy > *", {
+    gsap.from(".hero-stage__content > *", {
       y: 24,
       autoAlpha: 0,
       duration: 0.85,
       stagger: 0.1,
       ease: "power3.out",
       delay: 0.12,
+    });
+    gsap.from(".floating-btn", {
+      scale: 0.85,
+      autoAlpha: 0,
+      duration: 0.75,
+      stagger: 0.08,
+      ease: "back.out(1.4)",
+      delay: 0.35,
     });
 
     gsap.utils.toArray("[data-reveal]").forEach((element) => {
@@ -464,8 +537,9 @@
   renderSite();
   initMagneticControls();
   initScrollSpy();
-  initSideEmblem();
   const lenis = initLenis();
+  initDeepKnowledgeModal(lenis);
+  initForms();
   initMotion(lenis);
   initStarfield();
 })();
