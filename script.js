@@ -30,18 +30,14 @@
       .map(
         (policy, index) => `
           <article class="policy-card" data-reveal>
-            <button class="policy-toggle" type="button" aria-expanded="false" aria-controls="policy-${index}">
-              <span class="policy-topline">
-                <span class="policy-badge">${escapeHTML(policy.badge)}</span>
-                <span class="policy-symbol" aria-hidden="true">+</span>
-              </span>
-              <span class="policy-title">${escapeHTML(policy.title)}</span>
-            </button>
-            <div class="policy-details" id="policy-${index}">
-              <div>
-                <p class="policy-right">${escapeHTML(policy.right)}</p>
-                <p class="policy-flagship">${escapeHTML(policy.flagship)}</p>
-              </div>
+            <div class="policy-card__top">
+              <span class="policy-index">0${index + 1}</span>
+              <h3 class="policy-title">${escapeHTML(policy.title)}</h3>
+            </div>
+            <p class="policy-right">${escapeHTML(policy.right)}</p>
+            <div class="policy-pill">
+              <span class="policy-pill__tag">FLAGSHIP</span>
+              <span class="policy-pill__name">${escapeHTML(policy.flagship)}</span>
             </div>
           </article>`,
       )
@@ -83,15 +79,6 @@
       )
       .join("");
 
-    const valueList = content.founding.values
-      .map((value) => `<li>${escapeHTML(value)}</li>`)
-      .join("");
-    const foundingCopy = `<p class="mission-statement">${escapeHTML(content.founding.mission)}</p>${content.founding.paragraphs
-      .map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`)
-      .join("")}`;
-    const reframeCopy = content.founding.reframe
-      .map((line) => `<p>${escapeHTML(line)}</p>`)
-      .join("");
     const gatesCopy = content.gates.paragraphs
       .map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`)
       .join("");
@@ -133,18 +120,7 @@
           <div class="hero-bridge" aria-hidden="true"><span></span></div>
         </section>
 
-        <section class="section" id="founding">
-          ${renderSectionHeader(content.founding)}
-          <div class="founding-grid">
-            <div class="prose" data-reveal>${foundingCopy}</div>
-            <aside class="reframe-panel" data-reveal>
-              <div class="reframe-lines">${reframeCopy}</div>
-              <ul class="value-list">${valueList}</ul>
-            </aside>
-          </div>
-        </section>
-
-        <section class="section" id="standard" data-nav-section data-beacon>
+        <section class="section" id="standard" data-beacon>
           <header class="section-header" data-reveal>
             <p class="eyebrow">${escapeHTML(content.standard.eyebrow)}</p>
           </header>
@@ -157,7 +133,7 @@
           </div>
         </section>
 
-        <section class="section" id="charter" data-nav-section data-beacon>
+        <section class="section" id="points" data-nav-section data-beacon>
           ${renderSectionHeader(content.charter)}
           <div class="policy-grid">${policyCards}</div>
         </section>
@@ -180,7 +156,7 @@
           </article>
         </section>
 
-        <section class="section" id="answers">
+        <section class="section" id="faq" data-nav-section>
           ${renderSectionHeader(content.answers)}
           <div class="answer-list">${answerItems}</div>
         </section>
@@ -192,26 +168,6 @@
         <div class="rally-call" data-reveal>${rallyCall}</div>
         <p class="footer-vibe" data-reveal>${escapeHTML(content.vibe)}</p>
       </footer>`;
-  };
-
-  const initPolicies = () => {
-    const cards = [...document.querySelectorAll(".policy-card")];
-    cards.forEach((card) => {
-      const button = card.querySelector(".policy-toggle");
-      button.addEventListener("click", () => {
-        const willOpen = !card.classList.contains("is-open");
-        cards.forEach((item) => {
-          item.classList.remove("is-open");
-          item
-            .querySelector(".policy-toggle")
-            .setAttribute("aria-expanded", "false");
-        });
-        if (willOpen) {
-          card.classList.add("is-open");
-          button.setAttribute("aria-expanded", "true");
-        }
-      });
-    });
   };
 
   const initMagneticControls = () => {
@@ -243,7 +199,7 @@
         navLinks.forEach((link) => link.classList.remove("is-active"));
         linkFor(visible.target.id)?.classList.add("is-active");
       },
-      { rootMargin: "-30% 0px -56%", threshold: [0.01, 0.45] },
+      { rootMargin: "-25% 0px -50%", threshold: [0.05, 0.35, 0.7] },
     );
     sections.forEach((section) => observer.observe(section));
   };
@@ -306,7 +262,6 @@
       duration: 1.15,
       easing: (value) => 1 - Math.pow(1 - value, 4),
       smoothWheel: true,
-      anchors: true,
     });
     let frame = 0;
     const raf = (time) => {
@@ -318,6 +273,19 @@
       if (document.hidden) cancelAnimationFrame(frame);
       else frame = requestAnimationFrame(raf);
     });
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", (event) => {
+        const targetId = anchor.getAttribute("href");
+        if (!targetId || targetId === "#") return;
+        const target = document.querySelector(targetId);
+        if (target) {
+          event.preventDefault();
+          lenis.scrollTo(target, { offset: -70 });
+        }
+      });
+    });
+
     return lenis;
   };
 
@@ -351,20 +319,6 @@
         duration: 0.85,
         ease: "power3.out",
         scrollTrigger: { trigger: element, start: "top 86%", once: true },
-      });
-    });
-
-    gsap.utils.toArray("[data-parallax]").forEach((element) => {
-      const amount = Number(element.dataset.parallax || 0);
-      gsap.to(element, {
-        yPercent: amount,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".hero",
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
       });
     });
   };
@@ -508,7 +462,6 @@
   };
 
   renderSite();
-  initPolicies();
   initMagneticControls();
   initScrollSpy();
   initSideEmblem();

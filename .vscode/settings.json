@@ -3,10 +3,7 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
 
-  // ── Code actions on save ────────────────────────────────
-  // Values MUST be strings: "explicit" | "always" | "never"
-  // This project has no ESLint config, so this block is a
-  // no-op — safe to delete entirely if you never install ESLint.
+  // --- Linting ---------------------------------------------------
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
@@ -25,7 +22,7 @@
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "editor.minimap.enabled": false,
-  "editor.fontSize": 14,
+  "editor.fontSize": 12,
   "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Consolas, monospace",
   "editor.fontLigatures": true,
   "editor.renderWhitespace": "boundary",
@@ -34,7 +31,7 @@
   "editor.smoothScrolling": true,
 
   // ── Terminal ────────────────────────────────────────────
-  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontSize": 12,
 
   // ── HTML / CSS helpers ──────────────────────────────────
   "emmet.includeLanguages": {

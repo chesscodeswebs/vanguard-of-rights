@@ -6,54 +6,45 @@ window.VANGUARD_CONTENT = Object.freeze({
   brandName: "VANGUARD OF RIGHTS",
   logoAlt: "The Vanguard V",
   navigation: [
-    { href: "#charter", label: "THE PEOPLE'S CHARTER" },
-    { href: "#standard", label: "THE STANDARD" },
-    { href: "#line", label: "THE WAYS OF THE LINE" },
-    { href: "#ledger", label: "Everything in the Ledger." },
+    { href: "#points", label: "Our 6 Key Points" },
+    { href: "#bio", label: "Our Bio" },
+    { href: "#line", label: "Why Vanguard?" },
+    { href: "#ledger", label: "Campaigns" },
   ],
   hero: {
-    eyebrow: "The first rank of the majority.",
-    slogan: "Your rights. Our front line.",
-    definition: "The front line for rights you already have.",
+    eyebrow: "The Best You Can Find",
+    slogan: "Your rights. Our war.",
+    definition: "Fighting for what's right.",
     actions: [
-      { href: "#charter", label: "THE PEOPLE'S CHARTER", primary: true },
-      { href: "#standard", label: "THE STANDARD", primary: false },
+      { href: "#points", label: "Our 6 Key Philosophies", primary: true },
+      { href: "#bio", label: "How It Started", primary: false },
     ],
   },
   founding: {
-    eyebrow: "The Founding Legend",
-    title: "We are the first rank of a majority that already exists.",
+    eyebrow: "How It Began",
+    title: "We are the ones that listen to the people.",
     mission:
-      "The Vanguard of Rights exists to secure, in law, the rights Americans already believe they have. We take point on six things seven in ten Americans agree on: paychecks, prices, skills, oversight, fair borders, the lights. We carry the Charter, we finish the fight, and we earn the stars. The people are the army. We're just the first rank.",
-    paragraphs: [
-      "In 1838, millions of ordinary people signed a document called The People's Charter. Six demands. The papers called them dreamers. Parliament called them dangerous. Nothing happened for decades. Then, one by one, five of the six became law of the most powerful empire on Earth.",
-      "The secret was never the vanguard's ideas. It was that the ideas were already everyone's.",
-      "And about that word: on April 19, 1775, the men who got to the bridge first weren't an army. They were farmers and smiths who simply showed up before anyone else. That's all a vanguard has ever meant: the ones who arrive first.",
-    ],
+      "The Vanguard of Rights exists to secure the rights Americans want and need. We take point on six things Americans agree on: tarrifs, taxes, minimum wage, social security benefits, public school funding, and homeless shelter funding. The people are the army. We're just the first rank.",
+    paragraphs: [],
     reframe: [
       "The Vanguard isn't ahead of the people. It's ahead of the PROBLEM.",
-      "The point of the spear doesn't outrank the shaft. It just gets there first.",
-      "We are not the avant-garde of an ideology. We are the first rank of a majority that already exists.",
+      "The tip of the sword follows what the handle wants. It carries out the orders of the handle.",
+      "We are not the avant-garde of an ideology. We are the avant-garde of the people.",
     ],
-    values: [
-      "First rank of the majority",
-      "Rights are load-bearing",
-      "March on what's agreed: 70% before purity",
-      "The Standard never lies",
-      "Finish the fight, then come home (term limits as soldier's honor)",
-    ],
+    values: [""],
   },
   standard: {
     eyebrow: "THE STANDARD",
     title: "The Standard is the scoreboard.",
     body: "The party flag: navy field, one red stripe, six stars, one per Right. It launches with zero stars filled and gains a battle star every time a Right becomes law. A logo that keeps score.",
-    caption: "The flag is literally unfinished until we finish our jobs. Every rally opens by raising whatever the Standard currently holds.",
+    caption:
+      "The flag is literally unfinished until we finish our jobs. Every rally opens by raising whatever the Standard currently holds.",
   },
   charter: {
     eyebrow: "THE PEOPLE'S CHARTER",
     title: "THE PEOPLE'S CHARTER",
     intro:
-      "Not a platform. A charter of six Rights, in the lineage of the last People's Charter that won five of six. Every Right carries its polling tier: 🔩 Iron (75%+), 🛡️ Strong (65–75%), ⚠️ Watch (60–65%), from real national polling (KFF, Gallup, Pew, Data for Progress, 2024-cycle surveys). Two gates govern everything: the number AND the barbecue test (no tribal coding, no matter how high it polls).",
+      "Not a platform. A charter of Six rights that help the people, no matter what. Every Right carries its polling tier: 🔩 Iron (75%+), 🛡️ Strong (65–75%), ⚠️ Watch (60–65%), from real national polling (KFF, Gallup, Pew, Data for Progress, 2024-cycle surveys). Two gates govern everything: the number AND the barbecue test (no tribal coding, no matter how high it polls).",
     policies: [
       {
         title: "THE PAYCHECK",
@@ -106,7 +97,8 @@ window.VANGUARD_CONTENT = Object.freeze({
   line: {
     eyebrow: "THE WAYS OF THE LINE",
     title: "You don't join. You fall in.",
-    intro: "You don't join. You fall in. Members stand on the Line. Dues are paid in work.",
+    intro:
+      "You don't join. You fall in. Members stand on the Line. Dues are paid in work.",
     cards: [
       {
         title: "Posts",
@@ -133,9 +125,10 @@ window.VANGUARD_CONTENT = Object.freeze({
     title: "The full name is the chant",
     items: [
       {
-        question: "\"Vanguard\" alone = Lenin's vanguard-party theory; attack ads write themselves",
+        question:
+          '"Vanguard" alone = Lenin\'s vanguard-party theory; attack ads write themselves',
         answer:
-          "We never say \"the Vanguard\" alone. Ever. Full name, always. And the counter is devastating: \"Lenin's vanguard replaced the people's will. Ours only carries what the people already demand. Our founding acts are term limits and a stock-trading ban. Weirdest Leninists in history.\"",
+          'We never say "the Vanguard" alone. Ever. Full name, always. And the counter is devastating: "Lenin\'s vanguard replaced the people\'s will. Ours only carries what the people already demand. Our founding acts are term limits and a stock-trading ban. Weirdest Leninists in history."',
       },
       {
         question: "Who funds you?",
